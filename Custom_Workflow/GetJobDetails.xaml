@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>496,971</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>496,761</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetJobDetails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -57,7 +57,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetJobDetails" sap:VirtualizedContainerService.HintSize="476,911" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetJobDetails" sap:VirtualizedContainerService.HintSize="476,701" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Find_Jobs_Tab" />
       <Variable x:TypeArguments="ui:Browser" Name="WebsiteBrowser" />
@@ -76,13 +76,13 @@
         <InArgument x:TypeArguments="x:String">jobs</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:OpenBrowser BrowserType="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" DisplayName="Open the website " sap:VirtualizedContainerService.HintSize="434,719" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[WebsiteBrowser]" Url="[in_Config(&quot;Website_Base_Url&quot;).ToString+&quot;/&quot;+Find_Jobs_Tab]">
+    <ui:OpenBrowser BrowserType="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" DisplayName="Open the website " sap:VirtualizedContainerService.HintSize="434,509" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[WebsiteBrowser]" Url="[in_Config(&quot;Website_Base_Url&quot;).ToString+&quot;/&quot;+Find_Jobs_Tab]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,620" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,410" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -133,7 +133,8 @@
                 </ui:BrowserScope.Body>
               </ui:BrowserScope>
             </Sequence>
-            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[ExtractedJobList]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="334,261" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:CloseTab Browser="[WebsiteBrowser]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[ExtractedJobList]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
@@ -152,12 +153,11 @@
               </ui:ForEachRow.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEachRow>
-            <ui:CloseTab Browser="[WebsiteBrowser]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
           </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
