@@ -1,0 +1,17 @@
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF">
+<div>
+      <div style="text-align:center"><font face="Times New Roman"><b>Job
+            recommentation based on your profile</b></font></div>
+      <div style="text-align:center"><font face="Times New Roman"><b><br>
+          </b></font></div>
+      <div style="text-align:left"><font face="Times New Roman"><b>Find
+            the jobs link below:</b></font></div>
+    </div>
+<br>
+  </body>
+</html>

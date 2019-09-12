@@ -1,0 +1,220 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SendMail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_suitableJobList" Type="InArgument(sd:DataRow[])" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>719,2093</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SendMail_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="21">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SendMail" sap:VirtualizedContainerService.HintSize="699,2033" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="FirstLine" />
+      <Variable x:TypeArguments="x:String" Name="HeadingText" />
+      <Variable x:TypeArguments="x:String" Name="DynamicContent" />
+      <Variable x:TypeArguments="x:String" Name="EndOfEmail" />
+      <Variable x:TypeArguments="x:Int32" Name="MaximumDynamicContent" />
+      <Variable x:TypeArguments="x:Int32" Name="JobsCount" />
+      <Variable x:TypeArguments="x:String" Name="Designation" />
+      <Variable x:TypeArguments="x:String" Name="Url" />
+      <Variable x:TypeArguments="x:String" Name="HtmlEndTag" />
+      <Variable x:TypeArguments="x:String" Name="HtmlStartTag" />
+      <Variable x:TypeArguments="x:String" Name="JobDetail" />
+      <Variable x:TypeArguments="x:String" Name="JobLocation" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Maximum link" sap:VirtualizedContainerService.HintSize="657,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[MaximumDynamicContent]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">5</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Loop Values" sap:VirtualizedContainerService.HintSize="657,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[JobsCount]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign3" sap:VirtualizedContainerService.HintSize="657,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[FirstLine]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">Hi {0}</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign4" sap:VirtualizedContainerService.HintSize="657,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[FirstLine]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Format(FirstLine,in_TransactionItem("Name").ToString)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ReadTextFile Content="[HeadingText]" DisplayName="Read Text File1" FileName="[in_Config(&quot;Project_Relative_Path&quot;).ToString+&quot;HeadingTemplateForEmail.txt&quot;]" sap:VirtualizedContainerService.HintSize="657,59" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ReadTextFile Content="[EndOfEmail]" DisplayName="Read Text File2" FileName="[in_Config(&quot;Project_Relative_Path&quot;).ToString+&quot;EndOfEmail.txt&quot;]" sap:VirtualizedContainerService.HintSize="657,59" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+    <Assign DisplayName="Assign5" sap:VirtualizedContainerService.HintSize="657,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[DynamicContent]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign6" sap:VirtualizedContainerService.HintSize="657,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[HtmlStartTag]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <While sap:VirtualizedContainerService.HintSize="657,858" sap2010:WorkflowViewState.IdRef="While_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <While.Condition>[JobsCount &lt;= MaximumDynamicContent]</While.Condition>
+      <If Condition="[JobsCount &lt;= in_suitableJobList.Count]" sap:VirtualizedContainerService.HintSize="611,700" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="304,552" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign7" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[JobLocation]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[in_suitableJobList(jobsCount-1)("Location").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign8" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Url]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[(in_Config("Website_Base_Url").ToString).Trim+(in_suitableJobList(jobsCount-1)("Url").ToString).Trim]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign9" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[DynamicContent]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[DynamicContent+Environment.NewLine+JobLocation+"&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a href={0}&gt;Click To View Jobs&lt;/a&gt;&lt;br&gt;"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign10" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[DynamicContent]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[String.Format(DynamicContent,Url)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign11" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[JobsCount]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[JobsCount+1]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[JobsCount]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">6</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Else>
+      </If>
+    </While>
+    <Assign DisplayName="Assign12" sap:VirtualizedContainerService.HintSize="657,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[HtmlEndTag]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">&lt;/body&gt;&lt;/html&gt;</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[FirstLine+&quot;&lt;br&gt;&quot;+HeadingText+&quot;&lt;br&gt;&quot;+HtmlStartTag+DynamicContent+HtmlEndTag+&quot;&lt;br&gt;&quot;+EndOfEmail]" DisplayName="Send SMTP Mail Message" Email="haritha@asahitechnologies.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="657,145" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="True" Password="Asahi@12345" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Jobs for your profile" To="[in_TransactionItem(&quot;Email-Id&quot;).ToString]">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+      </ui:SendMail.Files>
+    </ui:SendMail>
+  </Sequence>
+</Activity>
