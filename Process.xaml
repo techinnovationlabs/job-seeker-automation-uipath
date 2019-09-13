@@ -3,6 +3,7 @@
     <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_JobList" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_BusinessRuleException" Type="InOutArgument(ui:BusinessRuleException)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -80,6 +81,7 @@
         <InArgument x:TypeArguments="sd:DataRow[]" x:Key="in_suitableJobList">[JobList]</InArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+        <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_BusinessRuleException">[io_BusinessRuleException]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
