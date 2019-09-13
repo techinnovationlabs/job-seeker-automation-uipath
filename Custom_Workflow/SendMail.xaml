@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>569,1255</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>745,1757</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendMail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -58,7 +58,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendMail" sap:VirtualizedContainerService.HintSize="549,1195" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendMail" sap:VirtualizedContainerService.HintSize="725,1697" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FirstLine" />
       <Variable x:TypeArguments="x:String" Name="HeadingText" />
@@ -79,7 +79,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Maximum link" sap:VirtualizedContainerService.HintSize="507,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign DisplayName="Set Maximum count" sap:VirtualizedContainerService.HintSize="683,60" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[MaximumDynamicContent]</OutArgument>
       </Assign.To>
@@ -87,7 +87,7 @@
         <InArgument x:TypeArguments="x:Int32">5</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Loop Values" sap:VirtualizedContainerService.HintSize="507,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+    <Assign DisplayName="Set the initial value" sap:VirtualizedContainerService.HintSize="683,60" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[JobsCount]</OutArgument>
       </Assign.To>
@@ -95,7 +95,7 @@
         <InArgument x:TypeArguments="x:Int32">1</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign3" sap:VirtualizedContainerService.HintSize="507,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Set the first line of email template" sap:VirtualizedContainerService.HintSize="683,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FirstLine]</OutArgument>
       </Assign.To>
@@ -103,7 +103,7 @@
         <InArgument x:TypeArguments="x:String">Hi {0}</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign4" sap:VirtualizedContainerService.HintSize="507,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Assign the dynamic value for first line" sap:VirtualizedContainerService.HintSize="683,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FirstLine]</OutArgument>
       </Assign.To>
@@ -111,9 +111,9 @@
         <InArgument x:TypeArguments="x:String">[String.Format(FirstLine,in_TransactionItem("Name").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ReadTextFile Content="[HeadingText]" DisplayName="Read Text File1" FileName="[in_Config(&quot;Project_Relative_Path&quot;).ToString+&quot;HeadingTemplateForEmail.txt&quot;]" sap:VirtualizedContainerService.HintSize="507,59" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:ReadTextFile Content="[EndOfEmail]" DisplayName="Read Text File2" FileName="[in_Config(&quot;Project_Relative_Path&quot;).ToString+&quot;EndOfEmail.txt&quot;]" sap:VirtualizedContainerService.HintSize="507,59" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
-    <Assign DisplayName="Assign5" sap:VirtualizedContainerService.HintSize="507,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+    <ui:ReadTextFile Content="[HeadingText]" DisplayName="Read the email template heading from text file 1" FileName="[in_Config(&quot;Project_Relative_Path&quot;).ToString+&quot;HeadingTemplateForEmail.txt&quot;]" sap:VirtualizedContainerService.HintSize="683,59" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ReadTextFile Content="[EndOfEmail]" DisplayName="Read the email template last line from the text file 2" FileName="[in_Config(&quot;Project_Relative_Path&quot;).ToString+&quot;EndOfEmail.txt&quot;]" sap:VirtualizedContainerService.HintSize="683,59" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+    <Assign DisplayName="Set Dynamic content as Nothing" sap:VirtualizedContainerService.HintSize="683,60" sap2010:WorkflowViewState.IdRef="Assign_13">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[DynamicContent]</OutArgument>
       </Assign.To>
@@ -121,7 +121,7 @@
         <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign6" sap:VirtualizedContainerService.HintSize="507,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+    <Assign DisplayName="Set the html start tag for dynamic values" sap:VirtualizedContainerService.HintSize="683,60" sap2010:WorkflowViewState.IdRef="Assign_17">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[HtmlStartTag]</OutArgument>
       </Assign.To>
@@ -129,7 +129,7 @@
         <InArgument x:TypeArguments="x:String">["&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;"]</InArgument>
       </Assign.Value>
     </Assign>
-    <While sap:VirtualizedContainerService.HintSize="507,51" sap2010:WorkflowViewState.IdRef="While_1">
+    <While DisplayName="Iterate to set the dynamic value" sap:VirtualizedContainerService.HintSize="683,51" sap2010:WorkflowViewState.IdRef="While_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -205,9 +205,9 @@
         </If.Else>
       </If>
     </While>
-    <If Condition="[in_suitableJobList.Count = 0]" sap:VirtualizedContainerService.HintSize="507,214" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[in_suitableJobList.Count = 0]" DisplayName="Check Job for the given profile found or not" sap:VirtualizedContainerService.HintSize="683,716" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+        <Assign DisplayName="Set business rule exception if no job found" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_28">
           <Assign.To>
             <OutArgument x:TypeArguments="ui:BusinessRuleException">[out_BusinessRuleException]</OutArgument>
           </Assign.To>
@@ -217,14 +217,14 @@
         </Assign>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Set the email  template and send the email" sap:VirtualizedContainerService.HintSize="376,568" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign12" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+          <Assign DisplayName="Set the html end tag for dynamic values" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_26">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[HtmlEndTag]</OutArgument>
             </Assign.To>
@@ -232,7 +232,7 @@
               <InArgument x:TypeArguments="x:String">&lt;/body&gt;&lt;/html&gt;</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+          <Assign DisplayName="Set Email Template" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_27">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[EmailTemplate]</OutArgument>
             </Assign.To>
@@ -245,10 +245,10 @@
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
             </ui:SendMail.Files>
           </ui:SendMail>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Email sent to &quot;+in_TransactionItem(&quot;Name&quot;).ToString+&quot; successfully&quot;]">
+          <ui:LogMessage DisplayName="Set the log message for mail status " sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Email sent to &quot;+in_TransactionItem(&quot;Name&quot;).ToString+&quot; successfully&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
